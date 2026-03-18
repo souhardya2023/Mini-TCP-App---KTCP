@@ -1,0 +1,6 @@
+*.o
+*.a
+user1
+user2
+initksocket
+received_file_*.txt

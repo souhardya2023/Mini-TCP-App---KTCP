@@ -1,0 +1,34 @@
+name: KTP Network Project CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gcc make
+
+    - name: Build project
+      run: |
+        make
+
+    - name: Verify build outputs
+      run: |
+        ls -l
+        test -f user1
+        test -f user2
+        test -f initksocket
+
+    - name: Clean build check
+      run: |
+        make clean
+        make
