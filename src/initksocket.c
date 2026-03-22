@@ -45,6 +45,10 @@ void create_and_bind() {
             // Create new UDP socket
             printf("Creating new UDP socket\n");
             int udp_sock = socket(AF_INET, SOCK_DGRAM, 0);
+
+            int opt = 1;
+            setsockopt(udp_sock, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+
             if (udp_sock < 0) {
                 fprintf(stderr, "Failed to create UDP socket: %s\n", strerror(errno));
                 net_socket->sock_id = -1;
@@ -75,6 +79,10 @@ void create_and_bind() {
             }
             
             // Perform the bind operation
+
+            int opt = 1;
+            setsockopt(net_socket->sock_id, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+            
             if (bind(net_socket->sock_id, (struct sockaddr*)&bind_addr, sizeof(bind_addr)) < 0) {
                 fprintf(stderr, "Failed to bind socket: %s\n", strerror(errno));
                 net_socket->sock_id = -1;

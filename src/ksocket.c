@@ -1,7 +1,8 @@
 /*===========================================
- Assignment 4: Emulating End-to-End Reliable Flow Control
- Name: Aritra Maji
- Roll number: 22CS30011
+ Mini Project 1: Emulating End-to-End Reliable Flow Control
+ CS39006 Networks Lab (Spring 2025-26)
+
+ ksocket builder functions
 ============================================*/
 
 #include "ksocket.h"
@@ -437,6 +438,11 @@ int k_close(int sockfd) {
         return -1;
     }
     
+    // close socket immediately
+    if (shared_mem[sockfd].sock_info.udp_sockid > 0) {
+        close(shared_mem[sockfd].sock_info.udp_sockid);
+    }
+
     // Close socket and mark as free
     shared_mem[sockfd].sock_info.free = 1;
     

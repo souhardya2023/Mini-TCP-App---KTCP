@@ -26,6 +26,9 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
     printf("Socket created successfully with ID: %d\n", sockfd);
+
+    // int opt = 1;
+    // setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
     
     // Parse command line arguments
     char src_ip[INET_ADDRSTRLEN], dest_ip[INET_ADDRSTRLEN];
@@ -105,7 +108,7 @@ int main(int argc, char *argv[]) {
     
     // Give some time for the last packet to be processed
     printf("Waiting for final acknowledgments...\n");
-    sleep(10);
+    sleep(2);
     
     // Close socket
     if (k_close(sockfd) < 0) {

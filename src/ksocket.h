@@ -1,7 +1,6 @@
 /*===========================================
- Assignment 4: Emulating End-to-End Reliable Flow Control
- Name: Aritra Maji
- Roll number: 22CS30011
+ Mini Project 1: Emulating End-to-End Reliable Flow Control
+ CS39006 Networks Lab (Spring 2025-26)
 ============================================*/
 
 #ifndef KSOCKET_H
@@ -24,7 +23,7 @@
 #include <time.h>
 
 // Configuration parameters
-#define T 5             // Timeout period in seconds
+#define T 1             // Timeout period in seconds
 #define DROP_PROB 0.05  // Message drop probability
 #define SOCK_KTP 3      // Socket type for KTP
 #define N 10            // Maximum number of KTP sockets
